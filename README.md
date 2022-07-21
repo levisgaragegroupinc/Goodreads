@@ -10,6 +10,14 @@ Edit me
 
 ## Installation
 
+```typescript
+$ git clone
+$ npm Install
+$ npx create-react-app "my-app"
+
+$ npm start "from the react app directory"
+```
+
 To run this application download the code from the repository and type `npm i` to install the dependencies.
 
 Make sure the following are installed:
