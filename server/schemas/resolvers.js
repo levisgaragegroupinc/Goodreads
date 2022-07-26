@@ -36,17 +36,16 @@ const resolvers = {
 
       return { token, user };
     },
-    saveBook: async (parent, { input }, context) => {
+    saveBook: async (parent, { newBook }, context) => {
       if (context.username) {
-        const updatedGoodRead = await User.findOneAndUpdate(
-          { _id: context.username._id },
-          { $push: { savedBooks: input } },
-          // { $addToSet: { savedBooks: input } },
+        const updatedRead = await User.findOneAndUpdate(
+          { _id: context._id },
+          { $addToSet: { savedBooks: newBook } },
           { new: true, runValidators: true }
         );
 
         console.log("This is the addbook route.");
-        return updatedGoodRead;
+        return updatedRead;
       }
       throw new AuthenticationError("Please login first!");
     },
