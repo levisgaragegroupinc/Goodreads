@@ -33,10 +33,6 @@ const SavedBooks = () => {
 
       // upon success, remove book's id from localStorage
       removeBookId(bookId);
-
-      // if (!response.ok) {
-      //   throw new Error("something went wrong!");
-      // }
     } catch (err) {
       console.error(err);
     }
@@ -46,9 +42,6 @@ const SavedBooks = () => {
   if (loading) {
     return <h2>LOADING...</h2>;
   }
-
-  // const savedBookIds = userData.savedBooks.map((book) => book.bookId);
-  // saveBookIds(savedBookIds);
 
   return (
     <>
