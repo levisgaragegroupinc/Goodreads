@@ -42,8 +42,9 @@ export const SAVE_BOOK = gql`
       image: $image
       link: $link
     ) {
-      username
       _id
+      username
+      email
       bookCount
       savedBooks {
         bookId
