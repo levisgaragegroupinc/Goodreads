@@ -47,18 +47,11 @@ const resolvers = {
           { _id: context._id },
           {
             $addToSet: {
-              savedBooks: authors,
-              description,
-              title,
-              bookId,
-              image,
-              link,
+              savedBooks: { authors, description, title, bookId, image, link },
             },
           },
           { new: true, runValidators: true }
         );
-
-        console.log("This is the addbook route.");
         return updatedGoodRead;
       }
       throw new AuthenticationError("Please login first!");
