@@ -37,20 +37,23 @@ const resolvers = {
       return { token, user };
     },
     saveBook: async (parent, { input }, context) => {
-      if (context.user) {
+      if (context.username) {
         const updatedGoodRead = await User.findOneAndUpdate(
-          { _id: context.user._id },
-          { $addToSet: { savedBooks: input } },
+          { _id: context.username._id },
+          { $push: { savedBooks: input } },
+          // { $addToSet: { savedBooks: input } },
           { new: true, runValidators: true }
         );
+
+        console.log("This is the addbook route.");
         return updatedGoodRead;
       }
       throw new AuthenticationError("Please login first!");
     },
     removeBook: async (parent, { bookId }, context) => {
-      if (context.user) {
+      if (context.username) {
         const updatedGoodRead = await User.findOneAndUpdate(
-          { _id: context.user._id },
+          { _id: context._id },
           { $pull: { savedBooks: { bookId: bookId } } },
           { new: true }
         );
