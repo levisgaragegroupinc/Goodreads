@@ -39,10 +39,13 @@ const resolvers = {
     saveBook: async (parent, { input }, context) => {
       if (context.username) {
         const updatedGoodRead = await User.findOneAndUpdate(
-          { _id: context._id },
-          { $addToSet: { savedBooks: input } },
+          { _id: context.username._id },
+          { $push: { savedBooks: input } },
+          // { $addToSet: { savedBooks: input } },
           { new: true, runValidators: true }
         );
+
+        console.log("This is the addbook route.");
         return updatedGoodRead;
       }
       throw new AuthenticationError("Please login first!");
