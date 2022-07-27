@@ -32,11 +32,11 @@ A live version of this application has been deployed to heroku and connected to 
 
 ### Search Books
 
-![Search Books](./client/src/assets/searchbooks_01.png)
+![Search Books](./client/src/assets/searchb_01.png)
 
 ### Saved Books
 
-![Saved Books](./client/src/assets/savedbooks_01.png)
+![Saved Books](./client/src/assets/savedb_01.png)
 
 ## View the Project
 
