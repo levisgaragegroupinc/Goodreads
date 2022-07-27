@@ -12,6 +12,7 @@ import SearchBooks from "./pages/SearchBooks";
 import SavedBooks from "./pages/SavedBooks";
 import Navbar from "./components/Navbar";
 
+// GraphQL API endpoint
 const httpLink = createHttpLink({
   uri: "/graphql",
 });
