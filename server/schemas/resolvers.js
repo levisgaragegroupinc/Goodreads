@@ -5,9 +5,9 @@ const { signToken } = require("../utils/auth");
 const resolvers = {
   Query: {
     me: async (parent, args, context) => {
-      if (context.username) {
+      if (context.user) {
         const userProfile = await User.findOne({
-          _id: context._id,
+          _id: context.user._id,
         }).select("-__v -password");
         return userProfile;
       }
@@ -36,16 +36,22 @@ const resolvers = {
 
       return { token, user };
     },
-    saveBook: async (parent, { input }, context) => {
+    saveBook: async (
+      parent,
+      { authors, description, title, bookId, image, link },
+      context
+    ) => {
+      console.log("This is context:", context);
       if (context.username) {
         const updatedGoodRead = await User.findOneAndUpdate(
-          { _id: context.username._id },
-          { $push: { savedBooks: input } },
-          // { $addToSet: { savedBooks: input } },
+          { _id: context._id },
+          {
+            $addToSet: {
+              savedBooks: { authors, description, title, bookId, image, link },
+            },
+          },
           { new: true, runValidators: true }
         );
-
-        console.log("This is the addbook route.");
         return updatedGoodRead;
       }
       throw new AuthenticationError("Please login first!");
