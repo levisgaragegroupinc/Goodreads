@@ -63,13 +63,10 @@ const SearchBooks = () => {
 
   // create function to handle saving a book to our database
   const handleSaveBook = async (bookId) => {
-    console.log("This is book ID:", bookId);
     // find the book in `searchedBooks` state by the matching id
     const bookToSave = searchedBooks.find((book) => book.bookId === bookId);
-    console.log("Booktosave:", bookToSave);
     // get token
     const token = Auth.loggedIn() ? Auth.getToken() : null;
-    console.log("This is token:", token);
 
     if (!token) {
       return false;
