@@ -44,7 +44,7 @@ const resolvers = {
       console.log("This is context:", context);
       if (context.username) {
         const updatedGoodRead = await User.findOneAndUpdate(
-          { _id: context._id },
+          { _id: context.user._id },
           {
             $addToSet: {
               savedBooks: { authors, description, title, bookId, image, link },
